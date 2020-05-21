@@ -73,7 +73,7 @@ typedef              u1_t* xref2u1_t;
 // print formatting of ostime_t.
 #ifndef LMIC_PRId_ostime_t
 # include <inttypes.h>
-# define LMIC_PRId_ostime_t	PRId32
+# define LMIC_PRId_ostime_t	PRId64
 #endif
 
 #define TYPEDEF_xref2rps_t     typedef         rps_t* xref2rps_t

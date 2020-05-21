@@ -105,22 +105,22 @@ uint8_t hal_getIrqLevel (void);
 void hal_sleep (void);
 
 /*
- * return 32-bit system time in ticks.
+ * return system time in ticks.
  */
-u4_t hal_ticks (void);
+ostime_t hal_ticks (void);
 
 /*
  * busy-wait until specified timestamp (in ticks) is reached. If on-time, return 0,
  * otherwise return the number of ticks we were late.
  */
-u4_t hal_waitUntil (u4_t time);
+ostime_t hal_waitUntil (ostime_t time);
 
 /*
  * check and rewind timer for target time.
  *   - return 1 if target time is close
  *   - otherwise rewind timer for target time or full period and return 0
  */
-u1_t hal_checkTimer (u4_t targettime);
+u1_t hal_checkTimer (ostime_t targettime);
 
 /*
  * perform fatal failure action.

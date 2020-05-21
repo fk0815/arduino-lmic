@@ -149,13 +149,13 @@ void os_runloop_once() {
     } else if(OS.scheduledjobs && hal_checkTimer(OS.scheduledjobs->deadline)) { // check for expired timed jobs
         j = OS.scheduledjobs;
         OS.scheduledjobs = j->next;
-    } else { // nothing pending
-        hal_sleep(); // wake by irq (timer already restarted)
     }
     hal_enableIRQs();
     if(j) { // run job callback
         j->func(j);
-    }
+    } else { // nothing pending
+		hal_sleep(); // wake by irq (timer already restarted)
+	}
 }
 
 // return true if there are any jobs scheduled within time ticks from now.

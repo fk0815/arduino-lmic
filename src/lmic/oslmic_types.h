@@ -37,7 +37,7 @@ typedef unsigned int       uint;
 typedef const char*        str_t;
 
 // the HAL needs to give us ticks, so it ought to know the right type.
-typedef              s4_t  ostime_t;
+typedef        int64_t  ostime_t;
 
 #ifdef __cplusplus
 }
