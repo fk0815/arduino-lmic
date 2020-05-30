@@ -146,8 +146,8 @@ void radio_monitor_rssi(ostime_t n, oslmic_radio_rssi_t *pRssi);
 #define us2osticks(us)   ((ostime_t)( ((int64_t)(us) * OSTICKS_PER_SEC) / 1000000))
 #define ms2osticks(ms)   ((ostime_t)( ((int64_t)(ms) * OSTICKS_PER_SEC)    / 1000))
 #define sec2osticks(sec) ((ostime_t)( (int64_t)(sec) * OSTICKS_PER_SEC))
-#define osticks2ms(os)   ((s4_t)(((os)*(int64_t)1000    ) / OSTICKS_PER_SEC))
-#define osticks2us(os)   ((s4_t)(((os)*(int64_t)1000000 ) / OSTICKS_PER_SEC))
+#define osticks2ms(os)   ((ostime_t)(((os)*(int64_t)1000    ) / OSTICKS_PER_SEC))
+#define osticks2us(os)   ((ostime_t)(((os)*(int64_t)1000000 ) / OSTICKS_PER_SEC))
 // Special versions
 #define us2osticksCeil(us)  ((ostime_t)( ((int64_t)(us) * OSTICKS_PER_SEC + 999999) / 1000000))
 #define us2osticksRound(us) ((ostime_t)( ((int64_t)(us) * OSTICKS_PER_SEC + 500000) / 1000000))
