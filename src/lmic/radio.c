@@ -416,7 +416,7 @@ static void opmode (u1_t mode) {
     writeOpmode((readReg(RegOpMode) & ~OPMODE_MASK) | mode);
 }
 
-static void opmodeLora() {
+static void opmodeLora(void) {
     u1_t u = OPMODE_LORA;
 #ifdef CFG_sx1276_radio
     if (LMIC.freq <= SX127X_FREQ_LF_MAX) {
@@ -426,7 +426,7 @@ static void opmodeLora() {
     writeOpmode(u);
 }
 
-static void opmodeFSK() {
+static void opmodeFSK(void) {
     u1_t u = OPMODE_FSK_SX127X_SETUP;
 
 #ifdef CFG_sx1276_radio
@@ -438,7 +438,7 @@ static void opmodeFSK() {
 }
 
 // configure LoRa modem (cfg1, cfg2)
-static void configLoraModem () {
+static void configLoraModem (void) {
     sf_t sf = getSf(LMIC.rps);
 
 #ifdef CFG_sx1276_radio
@@ -551,7 +551,7 @@ static void configLoraModem () {
 #endif /* CFG_sx1272_radio */
 }
 
-static void configChannel () {
+static void configChannel (void) {
     // set frequency: FQ = (FRF * 32 Mhz) / (2 ^ 19)
     uint64_t frf = ((uint64_t)LMIC.freq << 19) / 32000000;
     writeReg(RegFrfMsb, (u1_t)(frf>>16));
@@ -585,7 +585,7 @@ static void configChannel () {
 // need to be.
 //
 
-static void configPower () {
+static void configPower (void) {
     // our input paramter -- might be different than LMIC.txpow!
     s1_t const req_pw = (s1_t)LMIC.radio_txpow;
     // the effective power
@@ -745,7 +745,7 @@ static void setupFskRxTx(bit_t fDisableAutoClear) {
     writeReg(FSKRegSyncValue3, 0xC1);
 }
 
-static void txfsk () {
+static void txfsk (void) {
     // select FSK modem (from sleep mode)
     opmodeFSK();
 
@@ -794,7 +794,7 @@ static void txfsk () {
     opmode(OPMODE_TX);
 }
 
-static void txlora () {
+static void txlora (void) {
     // select LoRa modem (from sleep mode)
     //writeReg(RegOpMode, OPMODE_LORA);
     opmodeLora();
@@ -859,7 +859,7 @@ static void txlora () {
 }
 
 // start transmitter (buf=LMIC.frame, len=LMIC.dataLen)
-static void starttx () {
+static void starttx (void) {
     u1_t const rOpMode = readReg(RegOpMode);
 
     // originally, this code ASSERT()ed, but asserts are both bad and

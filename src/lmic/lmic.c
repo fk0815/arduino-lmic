@@ -2849,7 +2849,7 @@ void LMIC_clrTxData (void) {
     engineUpdate();
 }
 
-dr_t LMIC_feasibleDataRateForFrame(dr_t dr, u1_t payloadSize) {
+static dr_t LMIC_feasibleDataRateForFrame(dr_t dr, u1_t payloadSize) {
     if (payloadSize > MAX_LEN_PAYLOAD) {
         return dr;
     }

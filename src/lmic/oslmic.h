@@ -72,7 +72,8 @@ typedef              u1_t* xref2u1_t;
 // we will want 64-bit ostime_t. So, we will use a macro for the
 // print formatting of ostime_t.
 #ifndef LMIC_PRId_ostime_t
-# include <inttypes.h>
+#include <stdint.h>
+#include <inttypes.h>
 # define LMIC_PRId_ostime_t	PRId64
 #endif
 
