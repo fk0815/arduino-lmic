@@ -30,7 +30,9 @@
 
 #include "lmic.h"
 
+#ifdef __GNUG__
 extern const struct lmic_pinmap lmic_pins;
+#endif
 
 // RUNTIME STATE
 static struct {
@@ -48,7 +50,11 @@ int os_init_ex (const void *pintable) {
 }
 
 void os_init() {
+#ifdef __GNUG__
     if (os_init_ex((const void *)&lmic_pins))
+#else
+	if (os_init_ex(NULL))
+#endif
         return;
     ASSERT(0);
 }
